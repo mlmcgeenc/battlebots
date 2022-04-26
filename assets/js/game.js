@@ -4,8 +4,6 @@
 // 	* Defeat each enemy-robot
 // "LOSE" - Player robot's health is zero or less
 
-window.alert(`Welcome to Robot Gladiators`);
-
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
@@ -53,13 +51,13 @@ var fight = function (enemyName) {
 
 			// award player money for winning
 			playerMoney = playerMoney + 20;
-			console.log(`${playerName} wins 20 money! ${playerName} now has ${playerMoney}!`)
+			console.log(
+				`${playerName} wins 20 money! ${playerName} now has ${playerMoney}!`
+			);
 			// leave while() loop since enemy is dead
 			break;
 		} else {
-			window.alert(
-				`${enemyName} still has ${enemyHealth} health left.`
-			);
+			window.alert(`${enemyName} still has ${enemyHealth} health left.`);
 		}
 
 		// remove players's health by subtracting the amount set in the enemyAttack variable
@@ -82,6 +80,12 @@ var fight = function (enemyName) {
 }; // end of fight function
 
 for (i = 0; i < enemyNames.length; i++) {
+	if (playerHealth > 0) {
+		window.alert(`Welcome to Robot Gladiators! Round ` + (i + 1));
+	} else {
+		window.alert("You have lost your robot in battle! Game Over!");
+		break;
+	}
 	var pickedEnemyName = enemyNames[i];
 	enemyHealth = 50;
 	fight(pickedEnemyName);
